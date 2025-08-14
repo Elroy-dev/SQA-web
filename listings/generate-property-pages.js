@@ -12,7 +12,7 @@ const properties = [
         bedrooms: 3,
         bathrooms: 3,
         size: '2,200 sq.ft',
-        image: '../images/listings/pexels-abhishek-rana-368444-28720826.jpg'
+        image: '../images/Listings/pexels-abhishek-rana-368444-28720826.jpg'
     },
     {
         id: 2,
@@ -23,7 +23,7 @@ const properties = [
         bedrooms: 5,
         bathrooms: 6,
         size: '5,800 sq.ft',
-        image: '../images/listings/pexels-aboodi-13360247.jpg'
+        image: '../images/Listings/pexels-aboodi-13360247.jpg'
     },
     {
         id: 3,
@@ -34,7 +34,7 @@ const properties = [
         bedrooms: 4,
         bathrooms: 5,
         size: '4,500 sq.ft',
-        image: '../images/listings/pexels-aboodi-14985628.jpg'
+        image: '../images/Listings/pexels-aboodi-14985628.jpg'
     },
     // Add more properties as needed
 ];

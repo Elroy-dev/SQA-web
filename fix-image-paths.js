@@ -10,56 +10,39 @@ const CORRECT_CASE = {
     'team': 'Team'
 };
 
-// Function to fix image paths in a file
+// Normalize content by correcting the folder casing that immediately follows `images/`
+function normalizeImageFolderCase(content, filePath) {
+    let updated = false;
+    // Match any relative prefix (../ or ./ repeated), then images/, then the immediate folder, preserving trailing slash
+    const folderRegex = /((?:\.{1,2}\/)*images\/)([A-Za-z]+)(\/)/g;
+    const replaced = content.replace(folderRegex, (full, prefix, folder, slash) => {
+        const lower = folder.toLowerCase();
+        if (CORRECT_CASE[lower] && folder !== CORRECT_CASE[lower]) {
+            const newSeg = CORRECT_CASE[lower];
+            const before = `${prefix}${folder}${slash}`;
+            const after = `${prefix}${newSeg}${slash}`;
+            console.log(`Updating folder case in ${filePath}:`);
+            console.log(`  Old: ${before}`);
+            console.log(`  New: ${after}`);
+            updated = true;
+            return `${prefix}${newSeg}${slash}`;
+        }
+        return full;
+    });
+    return { content: replaced, updated };
+}
+
+// Function to fix image paths in a single file (any text file)
 function fixImagePathsInFile(filePath) {
     try {
         let content = fs.readFileSync(filePath, 'utf8');
-        let updated = false;
-        
-        // Find all image paths in the file
-        const imagePathRegex = /src=["'](.*?\.(?:jpg|jpeg|png|gif|webp|svg))["']/gi;
-        
-        // Replace incorrect paths with correct case
-        const updatedContent = content.replace(imagePathRegex, (match, imagePath) => {
-            // Only process relative image paths
-            if (!imagePath.startsWith('images/') && !imagePath.startsWith('./images/') && !imagePath.startsWith('../images/')) {
-                return match;
-            }
-            
-            // Split the path into parts
-            const parts = imagePath.split('/');
-            const imagesIndex = parts.indexOf('images');
-            
-            if (imagesIndex === -1 || imagesIndex === parts.length - 1) {
-                return match;
-            }
-            
-            // Get the folder name after 'images/'
-            const folderName = parts[imagesIndex + 1].toLowerCase();
-            
-            // Check if the folder name needs to be corrected
-            if (CORRECT_CASE[folderName] && parts[imagesIndex + 1] !== CORRECT_CASE[folderName]) {
-                // Update the folder name to the correct case
-                parts[imagesIndex + 1] = CORRECT_CASE[folderName];
-                const newPath = parts.join('/');
-                updated = true;
-                console.log(`Updating path in ${filePath}:`);
-                console.log(`  Old: ${imagePath}`);
-                console.log(`  New: ${newPath}`);
-                return `src="${newPath}"`;
-            }
-            
-            return match;
-        });
-        
-        // Write the updated content back to the file if changes were made
+        const { content: updatedContent, updated } = normalizeImageFolderCase(content, filePath);
         if (updated) {
             fs.writeFileSync(filePath, updatedContent, 'utf8');
             console.log(`✅ Updated ${filePath}`);
         } else {
             console.log(`ℹ️  No changes needed for ${filePath}`);
         }
-        
         return updated;
     } catch (error) {
         console.error(`❌ Error processing ${filePath}:`, error);
@@ -67,7 +50,7 @@ function fixImagePathsInFile(filePath) {
     }
 }
 
-// Function to process all HTML files in a directory
+// Function to process all text files in a directory
 function processDirectory(directory) {
     const files = fs.readdirSync(directory, { withFileTypes: true });
     let updatedFiles = 0;
@@ -77,11 +60,11 @@ function processDirectory(directory) {
         
         if (file.isDirectory()) {
             // Skip node_modules and other non-HTML directories
-            if (file.name === 'node_modules' || file.name.startsWith('.')) {
+            if (file.name === 'node_modules' || file.name === '.git' || file.name.startsWith('.')) {
                 continue;
             }
             updatedFiles += processDirectory(fullPath);
-        } else if (file.name.endsWith('.html')) {
+        } else if (file.name.endsWith('.html') || file.name.endsWith('.css') || file.name.endsWith('.js')) {
             if (fixImagePathsInFile(fullPath)) {
                 updatedFiles++;
             }
@@ -93,7 +76,7 @@ function processDirectory(directory) {
 
 // Start processing from the project root
 const rootDir = path.join(__dirname);
-console.log(`🔍 Scanning for HTML files in ${rootDir}...`);
+console.log(`🔍 Scanning for HTML/CSS/JS files in ${rootDir}...`);
 const updatedCount = processDirectory(rootDir);
 
 console.log(`\n✨ Done! Updated ${updatedCount} files.`);

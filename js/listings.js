@@ -29,7 +29,7 @@ const properties = [
         bedrooms: 3,
         bathrooms: 3,
         size: 2200,
-        image: '../images/listings/pexels-abhishek-rana-368444-28720826.jpg',
+        image: '../images/Listings/pexels-abhishek-rana-368444-28720826.jpg',
         featured: true
     },
     {
@@ -41,7 +41,7 @@ const properties = [
         bedrooms: 5,
         bathrooms: 6,
         size: 5800,
-        image: '../images/listings/pexels-aboodi-13360247.jpg',
+        image: '../images/Listings/pexels-aboodi-13360247.jpg',
         featured: true
     },
     {
@@ -53,7 +53,7 @@ const properties = [
         bedrooms: 4,
         bathrooms: 5,
         size: 4500,
-        image: '../images/listings/pexels-aboodi-14985628.jpg',
+        image: '../images/Listings/pexels-aboodi-14985628.jpg',
         featured: true
     },
     // Additional properties 4-15
@@ -66,7 +66,7 @@ const properties = [
         bedrooms: 4,
         bathrooms: 4,
         size: 2800,
-        image: '../images/listings/pexels-aboodi-16563219.jpg'
+        image: '../images/Listings/pexels-aboodi-16563219.jpg'
     },
     {
         id: 5,
@@ -77,7 +77,7 @@ const properties = [
         bedrooms: 2,
         bathrooms: 2,
         size: 1800,
-        image: '../images/listings/pexels-aboodi-16563228.jpg'
+        image: '../images/Listings/pexels-aboodi-16563228.jpg'
     },
     {
         id: 6,
@@ -88,7 +88,7 @@ const properties = [
         bedrooms: 6,
         bathrooms: 7,
         size: 8500,
-        image: '../images/listings/pexels-aboodi-31215767.jpg',
+        image: '../images/Listings/pexels-aboodi-31215767.jpg',
         featured: true
     },
     {
@@ -100,7 +100,7 @@ const properties = [
         bedrooms: 2,
         bathrooms: 2,
         size: 1600,
-        image: '../images/listings/pexels-aj-ahamad-767001191-29080569.jpg'
+        image: '../images/Listings/pexels-aj-ahamad-767001191-29080569.jpg'
     },
     {
         id: 8,
@@ -111,7 +111,7 @@ const properties = [
         bedrooms: 3,
         bathrooms: 4,
         size: 3800,
-        image: '../images/listings/pexels-aj-ahamad-767001191-29149071.jpg',
+        image: '../images/Listings/pexels-aj-ahamad-767001191-29149071.jpg',
         featured: true
     },
     {
@@ -123,7 +123,7 @@ const properties = [
         bedrooms: 7,
         bathrooms: 8,
         size: 12000,
-        image: '../images/listings/pexels-aj-ahamad-767001191-29149090.jpg'
+        image: '../images/Listings/pexels-aj-ahamad-767001191-29149090.jpg'
     },
     {
         id: 10,
@@ -134,7 +134,7 @@ const properties = [
         bedrooms: 3,
         bathrooms: 3,
         size: 2400,
-        image: '../images/listings/pexels-beingsanshots-8342444.jpg'
+        image: '../images/Listings/pexels-beingsanshots-8342444.jpg'
     },
     {
         id: 11,
@@ -145,7 +145,7 @@ const properties = [
         bedrooms: 3,
         bathrooms: 3,
         size: 2600,
-        image: '../images/listings/pexels-christian-konopatzki-1923628-10902477.jpg'
+        image: '../images/Listings/pexels-christian-konopatzki-1923628-10902477.jpg'
     },
     {
         id: 12,
@@ -156,7 +156,7 @@ const properties = [
         bedrooms: 3,
         bathrooms: 3,
         size: 3200,
-        image: '../images/listings/pexels-heyho-6580230.jpg',
+        image: '../images/Listings/pexels-heyho-6580230.jpg',
         featured: true
     },
     {
@@ -168,7 +168,7 @@ const properties = [
         bedrooms: 5,
         bathrooms: 6,
         size: 7500,
-        image: '../images/listings/pexels-heyho-6758528.jpg'
+        image: '../images/Listings/pexels-heyho-6758528.jpg'
     },
     {
         id: 14,
@@ -179,7 +179,7 @@ const properties = [
         bedrooms: 2,
         bathrooms: 2,
         size: 1900,
-        image: '../images/listings/pexels-heyho-6758776.jpg'
+        image: '../images/Listings/pexels-heyho-6758776.jpg'
     },
     {
         id: 15,
@@ -190,7 +190,7 @@ const properties = [
         bedrooms: 4,
         bathrooms: 5,
         size: 5200,
-        image: '../images/listings/pexels-heyho-7750138.jpg',
+        image: '../images/Listings/pexels-heyho-7750138.jpg',
         featured: true
     }
 ];
@@ -386,7 +386,7 @@ function openModal(property) {
     // Update image paths to use the correct folder
     const propertyWithCorrectedImages = {
         ...property,
-        image: `../images/listings/property${property.id}.jpg`
+        image: `../images/Listings/property${property.id}.jpg`
     };
     
     modalContent.innerHTML = createModalContent(propertyWithCorrectedImages);
