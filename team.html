@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team | SIAS Real Estate Dubai</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .team-hero {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(46, 55, 114, 0.9), rgba(46, 55, 114, 0.7)), 
+                        url('images/team-hero.jpg') no-repeat center center/cover;
+        }
+        
+        .team-section {
+            padding: 100px 0;
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .team-member {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition);
+            text-align: center;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .member-image {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .team-member:hover .member-image img {
+            transform: scale(1.05);
+        }
+        
+        .member-info {
+            padding: 25px 20px;
+        }
+        
+        .member-name {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            color: var(--accent);
+        }
+        
+        .member-position {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .member-bio {
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .member-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .member-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text);
+            transition: var(--transition);
+        }
+        
+        .member-social a:hover {
+            background: var(--accent);
+            color: var(--primary-bg);
+            transform: translateY(-3px);
+        }
+        
+        .join-team {
+            text-align: center;
+            margin-top: 80px;
+            padding: 60px 0;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: var(--border-radius);
+        }
+        
+        .join-team h2 {
+            margin-bottom: 20px;
+        }
+        
+        .join-team p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="images/Logos/Artboard 1 copy.png" alt="SIAS Real Estate">
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="listings/index.html">Listings</a>
+                <a href="team.html" class="active">Team</a>
+                <a href="#contact" class="cta-button">Contact Us</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="team-hero">
+        <div class="container">
+            <div class="hero-content" style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <h1 class="animate__animated animate__fadeInDown">Meet Our Team</h1>
+                <p class="animate__animated animate__fadeInUp animate__delay-1s" style="margin-bottom: 30px;">The experienced professionals behind SIAS Real Estate's success</p>
+                <a href="#contact" class="cta-button animate__animated animate__fadeInUp animate__delay-2s">Join Our Team</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <!-- Leadership Team Section -->
+            
+            <div class="team-grid">
+                <!-- Team Member 1 -->
+                <div class="team-member animate__animated animate__fadeInUp">
+                    <div class="member-image">
+                        <img src="images/Team/pexels-mert-coskun-386432351-33401869.jpg" alt="Sophia Al Maktoum" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Sophia Al Maktoum</h3>
+                        <div class="member-position">Founder & CEO</div>
+                        <p class="member-bio">With over 20 years in Dubai's real estate market, Sophia leads our team with vision and expertise.</p>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Team Member 2 -->
+                <div class="team-member animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
+                    <div class="member-image">
+                        <img src="images/Team/pexels-karolina-grabowska-4467687.jpg" alt="Sarah Johnson" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Sarah Johnson</h3>
+                        <div class="member-position">Sales Director</div>
+                        <p class="member-bio">Award-winning sales professional with a decade of experience in luxury property sales.</p>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Team Member 3 -->
+                <div class="team-member animate__animated animate__fadeInUp" style="animation-delay: 0.4s">
+                    <div class="member-image">
+                        <img src="images/Team/pexels-thisisengineering-3861954.jpg" alt="Elena Rodriguez" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Elena Rodriguez</h3>
+                        <div class="member-position">Head of Property Management</div>
+                        <p class="member-bio">Expert in property management with a focus on maximizing returns for investors.</p>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h2 style="margin-top: 100px;">Our Agents</h2>
+            
+            <div class="team-grid">
+                <!-- Agent 1 -->
+                <div class="team-member animate__animated animate__fadeInUp">
+                    <div class="member-image">
+                        <img src="images/Team/pexels-fauxels-3184405.jpg" alt="Fatima Al Mansoori" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Fatima Al Mansoori</h3>
+                        <div class="member-position">Senior Real Estate Agent</div>
+                        <p class="member-bio">Specializes in luxury villas and waterfront properties in Dubai's most exclusive communities.</p>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Agent 2 -->
+                <div class="team-member animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
+                    <div class="member-image">
+                        <img src="images/Team/pexels-elsimage-3394347.jpg" alt="Michael Bennett" style="width: 100%; height: 100%; object-fit: cover; object-position: top;">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Michael Bennett</h3>
+                        <div class="member-position">Real Estate Consultant</div>
+                        <p class="member-bio">Expert in investment properties and off-plan developments across Dubai.</p>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Agent 3 -->
+                <div class="team-member animate__animated animate__fadeInUp" style="animation-delay: 0.4s">
+                    <div class="member-image">
+                        <img src="images/Team/pexels-marta-klement-636760-1438081.jpg" alt="James Wilson" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">James Wilson</h3>
+                        <div class="member-position">Lettings Specialist</div>
+                        <p class="member-bio">Helping clients find their perfect rental property in Dubai's competitive market.</p>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="join-team">
+                <a href="#contact" class="cta-button">View Open Positions</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-phone"></i> +971 4 123 4567</p>
+                    <p><i class="fas fa-envelope"></i> careers@sias-realestate.ae</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Downtown Dubai, UAE</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <input type="tel" placeholder="Phone Number">
+                    <textarea placeholder="Tell us about your experience and why you'd like to join our team" required></textarea>
+                    <button type="submit" class="cta-button">Submit Application</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/Logos/Artboard 1 copy.png" alt="SIAS Real Estate">
+                </div>
+                <p>Your trusted partner in Dubai's luxury real estate market.</p>
+                <p>&copy; 2024 SIAS Real Estate. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

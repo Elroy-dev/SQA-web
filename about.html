@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | SIAS Real Estate Dubai</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .about-hero {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(46, 55, 114, 0.9), rgba(46, 55, 114, 0.7)), 
+                        url('images/about-hero.jpg') no-repeat center center/cover;
+        }
+        
+        .about-content {
+            padding: 100px 0;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 50px;
+        }
+        
+        .about-image {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .about-text h2 {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        
+        .about-text h2::after {
+            left: 0;
+            transform: none;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 992px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-text h2 {
+                text-align: center;
+            }
+            
+            .about-text h2::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="images/Logos/Artboard 1 copy.png" alt="SIAS Real Estate">
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html" class="active">About</a>
+                <a href="listings/index.html">Listings</a>
+                <a href="team.html">Team</a>
+                <a href="#contact" class="cta-button">Contact Us</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="container">
+            <div class="hero-content" style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <h1 class="animate__animated animate__fadeInDown">About SIAS Real Estate</h1>
+                <p class="animate__animated animate__fadeInUp animate__delay-1s" style="margin-bottom: 30px;">Your trusted partner in Dubai's luxury real estate market</p>
+                <a href="#contact" class="cta-button animate__animated animate__fadeInUp animate__delay-2s">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Content -->
+    <section class="about-content">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image animate__animated animate__fadeInLeft" style="height: 400px; overflow: hidden;">
+                    <img src="images/About/pexels-aj-ahamad-767001191-30047572.jpg" alt="Our Office" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="about-text animate__animated animate__fadeInRight">
+                    <h2>Our Story</h2>
+                    <p>Founded in 2010, SIAS Real Estate has been at the forefront of Dubai's dynamic property market, helping clients navigate the complexities of buying, selling, and renting premium properties in the most sought-after locations.</p>
+                    <p>Our team of experienced professionals brings together decades of combined expertise in real estate, finance, and customer service to deliver exceptional results for our clients.</p>
+                    <p>We pride ourselves on our in-depth market knowledge, personalized service, and commitment to excellence in every transaction.</p>
+                </div>
+            </div>
+            
+            <div class="about-grid" style="margin-top: 80px;">
+                <div class="about-text animate__animated animate__fadeInLeft">
+                    <h2>Our Mission</h2>
+                    <p>At SIAS Real Estate, our mission is to provide unparalleled real estate services by combining local expertise with global standards.</p>
+                    <p>We are committed to:</p>
+                    <ul style="margin-left: 20px; margin-bottom: 20px;">
+                        <li>Delivering exceptional customer service</li>
+                        <li>Maintaining the highest ethical standards</li>
+                        <li>Providing accurate market insights</li>
+                        <li>Building long-term relationships with our clients</li>
+                        <li>Contributing positively to our community</li>
+                    </ul>
+                    <p>Our approach is built on trust, transparency, and a deep understanding of our clients' unique needs and aspirations.</p>
+                </div>
+                <div class="about-image animate__animated animate__fadeInRight" style="height: 400px; overflow: hidden;">
+                    <img src="images/About/pexels-alex-green-5699479.jpg" alt="Our Team" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-item animate__animated animate__fadeInUp" style="animation-delay: 0.1s">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-item animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Happy Clients</div>
+                </div>
+                <div class="stat-item animate__animated animate__fadeInUp" style="animation-delay: 0.3s">
+                    <div class="stat-number">AED 2B+</div>
+                    <div class="stat-label">Properties Sold</div>
+                </div>
+                <div class="stat-item animate__animated animate__fadeInUp" style="animation-delay: 0.4s">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Awards Won</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-phone"></i> +971 4 123 4567</p>
+                    <p><i class="fas fa-envelope"></i> info@sias-realestate.ae</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Downtown Dubai, UAE</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <input type="tel" placeholder="Phone Number">
+                    <textarea placeholder="Your Message" required></textarea>
+                    <button type="submit" class="cta-button">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/Logos/Artboard 1 copy.png" alt="SIAS Real Estate">
+                </div>
+                <p>Your trusted partner in Dubai's luxury real estate market.</p>
+                <p>&copy; 2024 SIAS Real Estate. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Listings | SIAS Real Estate Dubai</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/listings.css">
+    <style>
+        .listings-hero {
+            height: 40vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(46, 55, 114, 0.9), rgba(46, 55, 114, 0.7));
+            margin-bottom: 40px;
+        }
+        
+        /* Filters and Search */
+        .filters-container {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .search-box {
+            display: flex;
+            margin-bottom: 20px;
+            max-width: 600px;
+        }
+        
+        .search-box input {
+            flex: 1;
+            padding: 12px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            border-radius: 5px 0 0 5px;
+            font-size: 1rem;
+        }
+        
+        .search-box input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .search-box button {
+            background: var(--accent);
+            border: none;
+            color: var(--primary-bg);
+            padding: 0 20px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .search-box button:hover {
+            background: #ffd700;
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .filter-group select, .filter-group button {
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-group select:hover, .filter-group button:hover {
+            border-color: var(--accent);
+        }
+        
+        .reset-btn {
+            background: transparent !important;
+            margin-left: auto;
+        }
+        
+        .reset-btn:hover {
+            color: var(--accent) !important;
+        }
+        
+        /* Property Grid */
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 20px 0 50px;
+        }
+        
+        .property-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .property-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-color: rgba(245, 198, 84, 0.3);
+        }
+        
+        .property-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .property-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--accent);
+            color: var(--primary-bg);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: capitalize;
+        }
+        
+        .property-info {
+            padding: 20px;
+        }
+        
+        .property-price {
+            color: var(--accent);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+        
+        .property-address {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .property-features {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        .property-features span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .view-details {
+            display: block;
+            text-align: center;
+            background: rgba(245, 198, 84, 0.1);
+            color: var(--accent);
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .view-details:hover {
+            background: rgba(245, 198, 84, 0.2);
+        }
+        
+        /* Loading Indicator */
+        .loading-indicator {
+            text-align: center;
+            padding: 40px 0;
+            grid-column: 1 / -1;
+            display: none;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto 15px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            border-top-color: var(--accent);
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            grid-column: 1 / -1;
+        }
+        
+        .no-results i {
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        .no-results h3 {
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        .no-results p {
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 20px;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 40px 20px;
+            box-sizing: border-box;
+        }
+        
+        .modal-content {
+            background: #1a1f3d;
+            margin: 0 auto;
+            max-width: 1000px;
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            animation: modalFadeIn 0.3s ease-out;
+        }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            background: var(--accent);
+            color: var(--primary-bg);
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .filter-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .reset-btn {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .property-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+            
+            .search-box {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../images/Logos/Artboard 1 copy.png" alt="SIAS Real Estate">
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../about.html">About</a>
+                <a href="index.html" class="active">Listings</a>
+                <a href="../team.html">Team</a>
+                <a href="#contact" class="cta-button">Contact Us</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="listings-hero" style="margin-top: 80px;">
+        <div class="container">
+            <h1>Our Properties</h1>
+            <p>Find your dream home from our exclusive collection</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Filters and Search -->
+        <div class="filters-container">
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Search by location, type, or keyword...">
+                <button id="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+            
+            <div class="filter-group">
+                <select id="type-filter">
+                    <option value="">All Types</option>
+                    <option value="apartment">Apartment</option>
+                    <option value="villa">Villa</option>
+                    <option value="penthouse">Penthouse</option>
+                    <option value="townhouse">Townhouse</option>
+                </select>
+                
+                <select id="bedrooms-filter">
+                    <option value="">Any Beds</option>
+                    <option value="1">1+ Bed</option>
+                    <option value="2">2+ Beds</option>
+                    <option value="3">3+ Beds</option>
+                    <option value="4">4+ Beds</option>
+                    <option value="5">5+ Beds</option>
+                </select>
+                
+                <select id="price-filter">
+                    <option value="">Price Range</option>
+                    <option value="0-1000000">Under 1M</option>
+                    <option value="1000000-3000000">1M - 3M</option>
+                    <option value="3000000-6000000">3M - 6M</option>
+                    <option value="6000000-10000000">6M - 10M</option>
+                    <option value="10000000-100000000">10M+</option>
+                </select>
+                
+                <select id="sort-by">
+                    <option value="price-asc">Price: Low to High</option>
+                    <option value="price-desc">Price: High to Low</option>
+                    <option value="bedrooms-desc">Bedrooms: High to Low</option>
+                    <option value="bedrooms-asc">Bedrooms: Low to High</option>
+                    <option value="size-desc">Size: Large to Small</option>
+                    <option value="size-asc">Size: Small to Large</option>
+                </select>
+                
+                <button id="reset-filters" class="reset-btn">Reset Filters</button>
+            </div>
+        </div>
+        
+        <!-- Property Grid -->
+        <div class="property-grid" id="property-grid">
+            <!-- Properties will be loaded here -->
+        </div>
+        
+        <!-- Loading Indicator -->
+        <div id="loading-indicator" class="loading-indicator">
+            <div class="spinner"></div>
+            <p>Loading properties...</p>
+        </div>
+        
+        <!-- No Results Message -->
+        <div id="no-results" class="no-results" style="display: none;">
+            <i class="fas fa-search"></i>
+            <h3>No properties found</h3>
+            <p>Try adjusting your search or filters to find what you're looking for.</p>
+            <button id="clear-all-filters" class="cta-button">Clear All Filters</button>
+        </div>
+    </div>
+    
+    <!-- Property Details Modal -->
+    <div id="property-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modal-content">
+                <!-- Modal content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample property data
+        const properties = [
+            {
+                id: 1,
+                title: 'Luxury Apartment in Downtown',
+                price: 'AED 2,500,000',
+                type: 'Apartment',
+                location: 'Downtown Dubai',
+                bedrooms: 3,
+                bathrooms: 3,
+                size: '2,200 sq.ft',
+                image: '../images/listings/pexels-abhishek-rana-368444-28720826.jpg'
+            },
+            {
+                id: 2,
+                title: 'Modern Villa on Palm Jumeirah',
+                price: 'AED 8,900,000',
+                type: 'Villa',
+                location: 'Palm Jumeirah',
+                bedrooms: 5,
+                bathrooms: 6,
+                size: '5,800 sq.ft',
+                image: '../images/listings/pexels-aboodi-13360247.jpg'
+            },
+            {
+                id: 3,
+                title: 'Penthouse with Burj Khalifa View',
+                price: 'AED 12,500,000',
+                type: 'Penthouse',
+                location: 'Business Bay',
+                bedrooms: 4,
+                bathrooms: 5,
+                size: '4,500 sq.ft',
+                image: '../images/listings/pexels-aboodi-14985628.jpg'
+            },
+            {
+                id: 4,
+                title: 'Waterfront Apartment in Dubai Marina',
+                price: 'AED 3,200,000',
+                type: 'Apartment',
+                location: 'Dubai Marina',
+                bedrooms: 2,
+                bathrooms: 2,
+                size: '1,800 sq.ft',
+                image: '../images/listings/pexels-aboodi-16563219.jpg'
+            },
+            {
+                id: 5,
+                title: 'Luxury Villa in Emirates Hills',
+                price: 'AED 15,000,000',
+                type: 'Villa',
+                location: 'Emirates Hills',
+                bedrooms: 6,
+                bathrooms: 7,
+                size: '8,500 sq.ft',
+                image: '../images/listings/pexels-aboodi-16563228.jpg'
+            },
+            {
+                id: 6,
+                title: 'Modern Apartment in JBR',
+                price: 'AED 2,800,000',
+                type: 'Apartment',
+                location: 'Jumeirah Beach Residence',
+                bedrooms: 2,
+                bathrooms: 2,
+                size: '1,650 sq.ft',
+                image: '../images/listings/pexels-aboodi-31215767.jpg'
+            },
+            {
+                id: 7,
+                title: 'Luxury Townhouse in Arabian Ranches',
+                price: 'AED 4,500,000',
+                type: 'Townhouse',
+                location: 'Arabian Ranches',
+                bedrooms: 4,
+                bathrooms: 4,
+                size: '3,200 sq.ft',
+                image: '../images/listings/pexels-aj-ahamad-767001191-29080569.jpg'
+            },
+            {
+                id: 8,
+                title: 'Penthouse in DIFC',
+                price: 'AED 18,000,000',
+                type: 'Penthouse',
+                location: 'DIFC',
+                bedrooms: 5,
+                bathrooms: 6,
+                size: '6,500 sq.ft',
+                image: '../images/listings/pexels-aj-ahamad-767001191-29149071.jpg'
+            },
+            {
+                id: 9,
+                title: 'Villa in Jumeirah Golf Estates',
+                price: 'AED 9,500,000',
+                type: 'Villa',
+                location: 'Jumeirah Golf Estates',
+                bedrooms: 5,
+                bathrooms: 6,
+                size: '7,200 sq.ft',
+                image: '../images/listings/pexels-aj-ahamad-767001191-29149090.jpg'
+            },
+            {
+                id: 10,
+                title: 'Apartment in Bluewaters',
+                price: 'AED 4,200,000',
+                type: 'Apartment',
+                location: 'Bluewaters',
+                bedrooms: 3,
+                bathrooms: 3,
+                size: '2,400 sq.ft',
+                image: '../images/listings/pexels-beingsanshots-8342444.jpg'
+            },
+            {
+                id: 11,
+                title: 'Villa in Al Barari',
+                price: 'AED 12,000,000',
+                type: 'Villa',
+                location: 'Al Barari',
+                bedrooms: 6,
+                bathrooms: 7,
+                size: '9,000 sq.ft',
+                image: '../images/listings/pexels-christian-konopatzki-1923628-10902477.jpg'
+            },
+            {
+                id: 12,
+                title: 'Apartment in Downtown',
+                price: 'AED 3,800,000',
+                type: 'Apartment',
+                location: 'Downtown Dubai',
+                bedrooms: 2,
+                bathrooms: 2,
+                size: '1,900 sq.ft',
+                image: '../images/listings/pexels-heyho-6580230.jpg'
+            },
+            {
+                id: 13,
+                title: 'Villa in The Springs',
+                price: 'AED 3,200,000',
+                type: 'Villa',
+                location: 'The Springs',
+                bedrooms: 4,
+                bathrooms: 4,
+                size: '3,000 sq.ft',
+                image: '../images/listings/pexels-heyho-6758528.jpg'
+            },
+            {
+                id: 14,
+                title: 'Apartment in City Walk',
+                price: 'AED 4,500,000',
+                type: 'Apartment',
+                location: 'City Walk',
+                bedrooms: 3,
+                bathrooms: 3,
+                size: '2,600 sq.ft',
+                image: '../images/listings/pexels-heyho-6758776.jpg'
+            },
+            {
+                id: 15,
+                title: 'Villa in Dubai Hills',
+                price: 'AED 7,500,000',
+                type: 'Villa',
+                location: 'Dubai Hills',
+                bedrooms: 5,
+                bathrooms: 6,
+                size: '6,800 sq.ft',
+                image: '../images/listings/pexels-heyho-7750138.jpg'
+            }
+        ];
+
+        // Function to render properties
+        function renderProperties() {
+            const grid = document.getElementById('property-grid');
+            grid.innerHTML = properties.map(property => `
+                <div class="property-card">
+                    <div class="property-image" style="background: #2e3772; height: 200px; background-image: url('${property.image}'); background-size: cover; background-position: center;"></div>
+                    <div class="property-info">
+                        <h3>${property.title}</h3>
+                        <div class="property-price">${property.price}</div>
+                        <p><i class="fas fa-map-marker-alt"></i> ${property.location}</p>
+                        <div style="display: flex; gap: 15px; margin-top: 15px;">
+                            <span><i class="fas fa-bed"></i> ${property.bedrooms} Beds</span>
+                            <span><i class="fas fa-bath"></i> ${property.bathrooms} Baths</span>
+                            <span><i class="fas fa-ruler-combined"></i> ${property.size}</span>
+                        </div>
+                        <a href="property-${property.id}.html" class="cta-button" style="display: block; text-align: center; margin-top: 15px;">View Details</a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProperties();
+            
+            // Mobile menu toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (hamburger && navLinks) {
+                hamburger.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    hamburger.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

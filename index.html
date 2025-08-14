@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIAS Real Estate | Dubai Properties</title>
+    <link rel="icon" type="image/png" href="images/Logos/Artboard 1 copy.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="images/Logos/Artboard 1 copy.png" alt="SIAS Real Estate">
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="about.html">About</a>
+                <a href="listings/index.html">Listings</a>
+                <a href="team.html">Team</a>
+                <a href="#contact" class="cta-button">Contact Us</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Auto-scrolling Carousel -->
+    <header class="hero">
+        <div class="hero-carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active" style="background-image: url('images/scroller/pexels-abhishek-rana-368444-28720826.jpg');"></div>
+                <div class="carousel-item" style="background-image: url('images/scroller/pexels-aboodi-13360247.jpg');"></div>
+                <div class="carousel-item" style="background-image: url('images/scroller/pexels-aboodi-14985628.jpg');"></div>
+                <div class="carousel-item" style="background-image: url('images/scroller/pexels-aboodi-16563219.jpg');"></div>
+                <div class="carousel-item" style="background-image: url('images/scroller/pexels-aboodi-16563228.jpg');"></div>
+            </div>
+            <div class="carousel-overlay"></div>
+            <div class="carousel-controls">
+                <button class="carousel-control prev" aria-label="Previous slide">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="carousel-dots">
+                    <span class="dot active" data-slide="0"></span>
+                    <span class="dot" data-slide="1"></span>
+                    <span class="dot" data-slide="2"></span>
+                    <span class="dot" data-slide="3"></span>
+                    <span class="dot" data-slide="4"></span>
+                </div>
+                <button class="carousel-control next" aria-label="Next slide">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+        <div class="hero-content">
+            <h1 class="animate__animated animate__fadeInDown">Luxury Living in Dubai</h1>
+            <p class="animate__animated animate__fadeInUp animate__delay-1s">Discover exclusive properties in the most prestigious locations</p>
+            <a href="listings/index.html" class="cta-button animate__animated animate__fadeInUp animate__delay-2s">View Properties</a>
+        </div>
+    </header>
+
+    <!-- Featured Properties -->
+    <section class="featured-properties">
+        <div class="container">
+            <h2>Featured Properties</h2>
+            <div class="property-grid">
+                <!-- Property cards will be dynamically loaded -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose-us">
+        <div class="container">
+            <h2>Why Choose SIAS Real Estate?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-award"></i>
+                    <h3>10+ Years Experience</h3>
+                    <p>Trusted by thousands of clients in Dubai's competitive market.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-home"></i>
+                    <h3>Premium Properties</h3>
+                    <p>Exclusive access to luxury properties in prime locations.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-headset"></i>
+                    <h3>24/7 Support</h3>
+                    <p>Dedicated team ready to assist you anytime.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-phone"></i> +971 4 123 4567</p>
+                    <p><i class="fas fa-envelope"></i> info@sias-realestate.ae</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Downtown Dubai, UAE</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <input type="tel" placeholder="Phone Number">
+                    <textarea placeholder="Your Message" required></textarea>
+                    <button type="submit" class="cta-button">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/Logos/Artboard 1 copy.png" alt="SIAS Real Estate">
+                </div>
+                <p>Your trusted partner in Dubai's luxury real estate market.</p>
+                <p>&copy; 2024 SIAS Real Estate. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
