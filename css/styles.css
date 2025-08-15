@@ -784,5 +784,5 @@ footer a:hover { color: #ffffff; opacity: 0.85; }
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #e0b34d;
+    background: var(--accent);
 }
