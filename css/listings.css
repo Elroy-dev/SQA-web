@@ -26,16 +26,16 @@
 }
 
 .search-box input:focus {
-    border-color: #2e3772;
+    border-color: #111111;
     outline: none;
-    box-shadow: 0 0 0 3px rgba(46, 55, 114, 0.1);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
 }
 
 .search-box button {
     position: absolute;
     right: 5px;
     top: 5px;
-    background: #2e3772;
+    background: #111111;
     color: white;
     border: none;
     border-radius: 50%;
@@ -49,7 +49,7 @@
 }
 
 .search-box button:hover {
-    background: #1a2040;
+    background: #000000;
 }
 
 .filter-group {
@@ -72,9 +72,9 @@
 }
 
 .filter-group select:focus {
-    border-color: #2e3772;
+    border-color: #111111;
     outline: none;
-    box-shadow: 0 0 0 3px rgba(46, 55, 114, 0.1);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
 }
 
 .reset-btn {
@@ -99,7 +99,7 @@
 
 .property-card {
     background: white;
-    border-radius: 10px;
+    border-radius: 0px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -136,8 +136,8 @@
     position: absolute;
     top: 15px;
     left: 15px;
-    background: #f5c654;
-    color: #2e3772;
+    background: var(--accent);
+    color: #111111;
     padding: 5px 12px;
     border-radius: 20px;
     font-size: 12px;
@@ -149,7 +149,7 @@
     position: absolute;
     bottom: 15px;
     left: 15px;
-    background: rgba(46, 55, 114, 0.9);
+    background: rgba(0, 0, 0, 0.85);
     color: white;
     padding: 5px 12px;
     border-radius: 4px;
@@ -168,7 +168,7 @@
 .property-details h3 {
     margin: 0 0 8px;
     font-size: 18px;
-    color: #2e3772;
+    color: #111111;
     font-weight: 600;
 }
 
@@ -182,7 +182,7 @@
 }
 
 .location i {
-    color: #f5c654;
+    color: var(--accent);
 }
 
 .property-features {
@@ -203,7 +203,7 @@
 }
 
 .property-features i {
-    color: #f5c654;
+    color: var(--accent);
 }
 
 .property-footer {
@@ -216,11 +216,11 @@
 .price {
     font-size: 20px;
     font-weight: 700;
-    color: #2e3772;
+    color: #111111;
 }
 
 .view-details {
-    background: #2e3772;
+    background: #111111;
     color: white;
     border: none;
     padding: 8px 18px;
@@ -232,7 +232,7 @@
 }
 
 .view-details:hover {
-    background: #1a2040;
+    background: #000000;
 }
 
 /* Loading and No Results */
@@ -247,7 +247,7 @@
     width: 50px;
     height: 50px;
     border: 5px solid #f3f3f3;
-    border-top: 5px solid #2e3772;
+    border-top: 5px solid #111111;
     border-radius: 50%;
     margin: 0 auto 20px;
     animation: spin 1s linear infinite;
@@ -265,7 +265,7 @@
 }
 
 .no-results h3 {
-    color: #2e3772;
+    color: #111111;
     margin-bottom: 10px;
 }
 
@@ -401,7 +401,7 @@
 
 .modal-property-details .property-price {
     font-size: 1.5rem;
-    color: #f5c654;
+    color: var(--accent);
     font-weight: 600;
     margin-bottom: 20px;
     display: block;
@@ -425,7 +425,7 @@
 }
 
 .property-features i {
-    color: #f5c654;
+    color: var(--accent);
     width: 20px;
     text-align: center;
 }
@@ -513,7 +513,7 @@
 }
 
 .amenity i {
-    color: #f5c654;
+    color: var(--accent);
     font-size: 16px;
     width: 20px;
     text-align: center;

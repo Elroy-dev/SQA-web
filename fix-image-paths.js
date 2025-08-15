@@ -80,3 +80,5 @@ console.log(`🔍 Scanning for HTML/CSS/JS files in ${rootDir}...`);
 const updatedCount = processDirectory(rootDir);
 
 console.log(`\n✨ Done! Updated ${updatedCount} files.`);
+// Explicitly exit to avoid any environment keeping the process open
+process.exit(0);

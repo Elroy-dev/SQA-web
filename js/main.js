@@ -358,7 +358,7 @@ function initMap() {
     new google.maps.Marker({
         position: dubai,
         map: map,
-        title: 'SIAS Real Estate',
+        title: 'SQA Real Estate',
         icon: 'images/marker.png'
     });
     */
